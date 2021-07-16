@@ -1,0 +1,29 @@
+.nav-back{
+ background: url(../../img/navback.jpg);
+ background-size: cover;
+ background-position: center;
+ width: 100%;
+ display: flex;
+ justify-content: space-evenly;
+ align-items: center;
+ height: 300px;
+}
+.to-do-title{
+ color: #fff;
+ font-size: 50px;
+ font-family: 'Tourney', cursive;
+ font-weight: 500;
+ text-shadow: 0 0 5px #fff;
+}
+.iconSun{
+ font-size: 40px;
+ color: #fff;
+ cursor: pointer;
+}
+.dark{
+ background-color: #fff;
+ color: #000 !important;
+}
+.iconSun:active.root{
+ color: #000;
+}
