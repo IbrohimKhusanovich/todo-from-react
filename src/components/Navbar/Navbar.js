@@ -7,7 +7,7 @@ export default class Navbar extends Component {
   lightDark=()=>{
    Light=!Light
 console.log(Light);
-if(Light==true){
+if(Light===true){
 document.body.classList.add('light');
 document.querySelector('.todo-inpt').classList.add('lightstyle')
 document.querySelector('.iconSun').classList.add('text-dark')

@@ -1,16 +1,17 @@
 import { faPlus, faSave } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { Navbar, Light } from "../Navbar/Navbar";
 import ToDo from "./ToDo";
 import "./ToDo.css";
+import { currentTodo } from "./ToDo";
 const TodoList = ({
   setInputText,
   todos,
   setTodos,
+  todo,
   inputText,
   setStatus,
-  filteredTodos,
+  filteredTodos
 }) => {
   const inputTextHandler = (e) => {
     setInputText(e.target.value);
@@ -29,7 +30,12 @@ const TodoList = ({
   const statusHandler = (e) => {
     setStatus(e.target.value);
   };
-
+const editSaveHandler=()=>{
+  currentTodo.text=inputText
+  document.querySelector(".edit-btn").classList.remove("d-flex");
+  setInputText('')
+  setTodos([...todos])
+}
   return (
     <div>
       <div className='todo'>
@@ -46,7 +52,7 @@ const TodoList = ({
               <FontAwesomeIcon icon={faPlus} />
             </button>
             <button className='edit-btn'>
-              <FontAwesomeIcon icon={faSave} />
+              <FontAwesomeIcon onClick={editSaveHandler} icon={faSave} />
             </button>
           </div>
           <select onChange={statusHandler} className='selects' name='dropdown'>
@@ -54,7 +60,7 @@ const TodoList = ({
               All
             </option>
             <option value='completed'>Completed</option>
-            <option value='nocompleted'>Nocompleted</option>
+            <option value='uncomplited'>Nocompleted</option>
           </select>
         </div>
         <div className='todo-list'>
@@ -67,6 +73,8 @@ const TodoList = ({
                 todos={todos}
                 setTodos={setTodos}
                 todo={todo}
+                inputText={inputText}
+                setInputText={setInputText}
               />
             ))}
           </ul>

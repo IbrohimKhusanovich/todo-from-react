@@ -1,7 +1,16 @@
 import React from "react";
 import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-const ToDo = ({ text, completed, todos, setTodos, todo }) => {
+export let currentTodo=null;
+const ToDo = ({
+  setInputText,
+  inputText,
+  text,
+  completed,
+  todos,
+  setTodos,
+  todo,
+}) => {
   const deleteELem = () => {
     setTodos(todos.filter((el) => el.id !== todo.id));
   };
@@ -19,6 +28,12 @@ const ToDo = ({ text, completed, todos, setTodos, todo }) => {
       })
     );
   };
+   const HandleEdit = () => {
+    currentTodo=todo
+    console.log(currentTodo);
+    setInputText(todo.text);
+    document.querySelector(".edit-btn").classList.add("d-flex");
+  }
   let num = 1;
   return (
     <li className='list-child'>
@@ -28,18 +43,23 @@ const ToDo = ({ text, completed, todos, setTodos, todo }) => {
       </div>
       <div className='btns-list'>
         <input
-          value={todo.completed}
+          // value={todo.completed}
+          checked={todo.completed?true:false}
           type='checkbox'
           onClick={completeEl}
           className='todo-check'
         />
-          <FontAwesomeIcon
-            className='todo-delet'
-            icon={faTrashAlt}
-            onClick={deleteELem}
-          />
+        <FontAwesomeIcon
+          className='todo-delet'
+          icon={faTrashAlt}
+          onClick={deleteELem}
+        />
 
-        <FontAwesomeIcon className='todo-edit' icon={faEdit} />
+        <FontAwesomeIcon
+          className='todo-edit'
+          onClick={HandleEdit}
+          icon={faEdit}
+        />
       </div>
     </li>
   );

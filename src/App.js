@@ -35,6 +35,7 @@ function App() {
         setStatus={setStatus}
         filteredTodos={filteredTodos}
       />
+
     </>
   );
 }
