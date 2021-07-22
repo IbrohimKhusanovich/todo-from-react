@@ -150,7 +150,7 @@
   max-width: max-content;
 
 }
-.todo-inpt,.todo-btn{
+.todo-inpt,.todo-btn,.edit-btn{
   font-size: 15px;
   padding: 10px 12px;
 height: 100%;
